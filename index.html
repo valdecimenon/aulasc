@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Página</title>
+
+    <style>
+        #pagina{
+            background-color: aquamarine;
+            width: 50%;
+            height: 80%;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            color: brown;
+        }
+
+        body {
+            background-color: rgb(169, 169, 169);
+        }
+
+        #imagem {
+            cursor: pointer;
+            width: 90%;
+            margin: 5%;
+            border-radius: 5px;
+        }
+
+    </style>
+
+
+</head>
+<!-- <body onload="autoOpacidade()"> -->
+<body>
+    
+    <h1>Exemplo de HTML</h1>
+    <h2>Outra linha</h2>
+    <h3>Uma outra linha</h3>
+
+    <div id="pagina">
+
+        
+    </div>
+
+    <script>
+        var pagina = document.getElementById('pagina');
+        var indImagem = 1;
+        var opacidade = 1;  // 0..1
+        var reduzir = true;
+
+        pagina.innerHTML += '<img id="imagem"  onmouseover="escalarImagem()"  onclick="trocarImagem();" src="https://softgraf.com/img/img1.jpg">';
+
+        function trocarImagem(){
+            var imagem = document.getElementById('imagem');
+            indImagem++;
+            if (indImagem > 7){
+                indImagem = 1;
+            }
+            imagem.src = "https://softgraf.com/img/img" + indImagem + ".jpg";
+        }
+
+
+        // arrow function
+        const mudarOpacidade = () => {
+            var imagem = document.getElementById('imagem');
+            if (opacidade <= 0.1){
+                reduzir = false;
+            } else if (opacidade >= 1){
+                reduzir = true;
+            }
+
+            if (reduzir){
+                opacidade -= 0.1;
+            } else {
+                opacidade += 0.1;
+            }
+
+            imagem.style.opacity = opacidade;
+        }
+
+        const autoOpacidade = () => {
+            setInterval("mudarOpacidade()", 100);
+        }
+
+        const escalarImagem = () => {
+            var imagem = document.getElementById('imagem');
+            imagem.style.width = "50%";
+        }
+
+        pagina.innerHTML += '<h2>Exemplo for</h2>';
+        for (i=1; i<4; i++){
+            pagina.innerHTML += '<h3>' + i + '</h3>';
+        }
+
+        pagina.innerHTML += '<h2>Exemplo while</h2>';
+        i = 1;
+        while (i < 4){
+            pagina.innerHTML += '<h3>' + i + '</h3>';
+            i++;
+        }
+        
+ 
+    </script>
+</body>
+</html>
